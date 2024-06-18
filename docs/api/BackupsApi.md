@@ -4,8 +4,8 @@ All URIs are relative to *https://mariadb.de-txl.ionos.com*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**BackupsFindById**](BackupsApi.md#BackupsFindById) | **Get** /backups/{backupId} | Fetch a cluster&#39;s backups|
-|[**BackupsGet**](BackupsApi.md#BackupsGet) | **Get** /backups | List of cluster&#39;s backups.|
+|[**BackupsFindById**](BackupsApi.md#BackupsFindById) | **Get** /backups/{backupId} | Fetch backups|
+|[**BackupsGet**](BackupsApi.md#BackupsGet) | **Get** /backups | List of backups.|
 |[**ClusterBackupsGet**](BackupsApi.md#ClusterBackupsGet) | **Get** /clusters/{clusterId}/backups | List backups of cluster|
 
 
@@ -17,7 +17,7 @@ var result BackupResponse = BackupsFindById(ctx, backupId)
                       .Execute()
 ```
 
-Fetch a cluster's backups
+Fetch backups
 
 
 
@@ -101,7 +101,7 @@ var result BackupList = BackupsGet(ctx)
                       .Execute()
 ```
 
-List of cluster's backups.
+List of backups.
 
 
 
