@@ -13,6 +13,7 @@
 |**DisplayName** | **string** | The friendly name of your cluster. | |
 |**MaintenanceWindow** | Pointer to [**MaintenanceWindow**](MaintenanceWindow.md) |  | [optional] |
 |**Credentials** | [**DBUser**](DBUser.md) |  | |
+|**FromBackup** | Pointer to [**RestoreRequest**](RestoreRequest.md) |  | [optional] |
 
 ## Methods
 
@@ -217,5 +218,30 @@ and a boolean to check if the value has been set.
 
 SetCredentials sets Credentials field to given value.
 
+
+### GetFromBackup
+
+`func (o *CreateClusterProperties) GetFromBackup() RestoreRequest`
+
+GetFromBackup returns the FromBackup field if non-nil, zero value otherwise.
+
+### GetFromBackupOk
+
+`func (o *CreateClusterProperties) GetFromBackupOk() (*RestoreRequest, bool)`
+
+GetFromBackupOk returns a tuple with the FromBackup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFromBackup
+
+`func (o *CreateClusterProperties) SetFromBackup(v RestoreRequest)`
+
+SetFromBackup sets FromBackup field to given value.
+
+### HasFromBackup
+
+`func (o *CreateClusterProperties) HasFromBackup() bool`
+
+HasFromBackup returns a boolean if a field has been set.
 
 

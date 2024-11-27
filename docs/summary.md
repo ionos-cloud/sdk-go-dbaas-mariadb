@@ -7,6 +7,7 @@
 
 * [BackupsApi](api/BackupsApi.md)
 * [ClustersApi](api/ClustersApi.md)
+* [RestoreApi](api/RestoreApi.md)
 
 ## Models
 
@@ -40,4 +41,7 @@
 * [MariadbVersion](models/MariadbVersion.md)
 * [Pagination](models/Pagination.md)
 * [PaginationLinks](models/PaginationLinks.md)
+* [PatchClusterProperties](models/PatchClusterProperties.md)
+* [PatchClusterRequest](models/PatchClusterRequest.md)
+* [RestoreRequest](models/RestoreRequest.md)
 * [State](models/State.md)

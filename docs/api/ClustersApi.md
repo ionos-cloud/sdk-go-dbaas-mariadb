@@ -7,6 +7,7 @@ All URIs are relative to *https://mariadb.de-txl.ionos.com*
 |[**ClustersDelete**](ClustersApi.md#ClustersDelete) | **Delete** /clusters/{clusterId} | Delete a cluster|
 |[**ClustersFindById**](ClustersApi.md#ClustersFindById) | **Get** /clusters/{clusterId} | Fetch a cluster|
 |[**ClustersGet**](ClustersApi.md#ClustersGet) | **Get** /clusters | List clusters|
+|[**ClustersPatch**](ClustersApi.md#ClustersPatch) | **Patch** /clusters/{clusterId} | Update a cluster|
 |[**ClustersPost**](ClustersApi.md#ClustersPost) | **Post** /clusters | Create a cluster|
 
 
@@ -255,6 +256,91 @@ ctx := context.WithValue(context.Background(), {packageName}.ContextOperationSer
 })
 ctx = context.WithValue(context.Background(), {packageName}.ContextOperationServerVariables, map[string]map[string]string{
     "ClustersApiService.ClustersGet": {
+    "port": "8443",
+},
+})
+```
+
+
+## ClustersPatch
+
+```go
+var result ClusterResponse = ClustersPatch(ctx, clusterId)
+                      .PatchClusterRequest(patchClusterRequest)
+                      .Execute()
+```
+
+Update a cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    ionoscloud "github.com/ionos-cloud/sdk-go-dbaas-mariadb"
+)
+
+func main() {
+    clusterId := "498ae72f-411f-11eb-9d07-046c59cc737e" // string | The unique ID of the cluster.
+    patchClusterRequest := *openapiclient.NewPatchClusterRequest() // PatchClusterRequest | Attributes of the cluster which should be modified.
+
+    configuration := ionoscloud.NewConfiguration("USERNAME", "PASSWORD", "TOKEN", "HOST_URL")
+    apiClient := ionoscloud.NewAPIClient(configuration)
+    resource, resp, err := apiClient.ClustersApi.ClustersPatch(context.Background(), clusterId).PatchClusterRequest(patchClusterRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ClustersPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", resp)
+    }
+    // response from `ClustersPatch`: ClusterResponse
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ClustersPatch`: %v\n", resource)
+}
+```
+
+### Path Parameters
+
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+|**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.|
+|**clusterId** | **string** | The unique ID of the cluster. | |
+
+### Other Parameters
+
+Other parameters are passed through a pointer to an apiClustersPatchRequest struct via the builder pattern
+
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **patchClusterRequest** | [**PatchClusterRequest**](../models/PatchClusterRequest.md) | Attributes of the cluster which should be modified. | |
+
+### Return type
+
+[**ClusterResponse**](../models/ClusterResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### URLs Configuration per Operation
+Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
+An operation is uniquely identified by `"ClustersApiService.ClustersPatch"` string.
+Similar rules for overriding default operation server index and variables apply by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+
+```golang
+ctx := context.WithValue(context.Background(), {packageName}.ContextOperationServerIndices, map[string]int{
+    "ClustersApiService.ClustersPatch": 2,
+})
+ctx = context.WithValue(context.Background(), {packageName}.ContextOperationServerVariables, map[string]map[string]string{
+    "ClustersApiService.ClustersPatch": {
     "port": "8443",
 },
 })
