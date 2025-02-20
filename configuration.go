@@ -141,7 +141,7 @@ func NewConfiguration(username, password, token, hostUrl string) *Configuration 
 	cfg := &Configuration{
 		DefaultHeader:      make(map[string]string),
 		DefaultQueryParams: url.Values{},
-		UserAgent:          "ionos-cloud-sdk-go-dbaas-mariadb/v1.1.2",
+		UserAgent:          "ionos-cloud-sdk-go-dbaas-mariadb/v1.1.3",
 		Debug:              false,
 		Username:           username,
 		Password:           password,
@@ -186,6 +186,14 @@ func NewConfiguration(username, password, token, hostUrl string) *Configuration 
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{},
+	}
+	if hostUrl != "" {
+		cfg.Servers = ServerConfigurations{
+			{
+				URL:         getServerUrl(hostUrl),
+				Description: "overriden endpoint",
+			},
+		}
 	}
 	return cfg
 }
